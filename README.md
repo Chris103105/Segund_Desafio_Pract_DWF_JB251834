@@ -7,6 +7,8 @@ Este proyecto es una aplicación backend desarrollada con **Spring Boot** y **Ja
  demostración del funcionamiento del sistema en el siguiente enlace:
 https://drive.google.com/drive/folders/1i7uSR6TawZz3K4B05m7MTl4L3lDXAxLu?usp=drive_link
 
+Enlaces con las guias realizadas en clases 
+https://github.com/Chris103105/Ejercicios_de_clases
 ##  Tecnologías y Dependencias
 
 El proyecto está construido utilizando las siguientes herramientas y dependencias principales:
