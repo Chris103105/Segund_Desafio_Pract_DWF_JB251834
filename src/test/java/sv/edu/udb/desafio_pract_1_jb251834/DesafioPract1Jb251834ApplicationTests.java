@@ -30,7 +30,7 @@ class DesafioPract1Jb251834ApplicationTests {
     @Transactional
     @Commit
     void cargarDatosIniciales() {
-        // 1. Contratando a los profesores
+        // 1. Creando a los profesores
         Profesor docenteFisica = new Profesor();
         docenteFisica.setNombre("Roberto Salazar");
 
@@ -59,7 +59,7 @@ class DesafioPract1Jb251834ApplicationTests {
         Alumno estudianteDos = new Alumno();
         estudianteDos.setNombre("Manuel");
         estudianteDos.setApellido("Guzman");
-        // Manuel lleva 2 materias para romper la simetría
+        
         estudianteDos.setMaterias(List.of(psc, fisica));
 
         Alumno estudianteTres = new Alumno();
