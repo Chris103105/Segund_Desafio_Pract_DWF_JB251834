@@ -8,28 +8,44 @@ import sv.edu.udb.desafio_pract_1_jb251834.repository.AlumnoRepository;
 import java.util.List;
 import java.util.Optional;
 
-@Service // Le indicamos a Spring que esta clase maneja la lógica de negocio
+/**
+ * Service que centraliza la lógica de negocio para la entidad Alumno.
+ * Actúa como puente entre el Controller y el Repository.
+ */
+@Service
 public class AlumnoService {
 
+    // Inyección del repositorio para realizar operaciones CRUD sobre la BD
     @Autowired
     private AlumnoRepository alumnoRepository;
 
-    // Método para obtener todos (GET)
+    /**
+     * Recupera todos los registros de alumnos almacenados en la base de datos.
+     */
     public List<Alumno> obtenerTodos() {
         return alumnoRepository.findAll();
     }
 
-    // Método para buscar por ID (GET específico)
+    /**
+     * Busca un alumno específico por su ID.
+     * @param id Identificador único del alumno.
+     * @return Optional que puede contener el alumno si existe.
+     */
     public Optional<Alumno> obtenerPorId(Long id) {
         return alumnoRepository.findById(id);
     }
 
-    // Método para guardar o actualizar (POST / PUT)
+    /**
+     * Persiste o actualiza un objeto Alumno en la base de datos.
+     * Si el ID ya existe, JPA realiza un UPDATE; de lo contrario, un INSERT.
+     */
     public Alumno guardar(Alumno alumno) {
         return alumnoRepository.save(alumno);
     }
 
-    // Método para borrar (DELETE)
+    /**
+     * Elimina un registro de alumno de la base de datos de forma permanente.
+     */
     public void eliminar(Long id) {
         alumnoRepository.deleteById(id);
     }
