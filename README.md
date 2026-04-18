@@ -20,13 +20,14 @@ El proyecto está construido utilizando las siguientes herramientas y dependenci
 * ** SpringDoc OpenAPI (Swagger)** 
 
 ## Estructura de la Base de Datos
+El sistema gestiona la integridad relacional entre las siguientes entidades:
 
-El sistema modela las siguientes entidades y sus relaciones:
-1.  **Profesor:** Entidad independiente.
-2.  **Materia:** Entidad dependiente (`@ManyToOne` con Profesor). No permite materias huérfanas.
-3.  **Alumno:** Se relaciona con Materia mediante una tabla intermedia (`@ManyToMany`).
+Profesor: Entidad principal.
 
-* La estructura inicial y los datos se cargan automáticamente al iniciar la aplicación mediante los scripts `schema.sql` y `data.sql`.*
+Materia: Vinculada a un profesor.
+
+Alumno: Relacionado con materias mediante una tabla intermedia.
+
 
 ##  Cómo clonar y ejecutar el proyecto
 
@@ -36,6 +37,7 @@ Sigue estos pasos para desplegar el proyecto en tu entorno local:
 Abre la terminal y ejecuta el siguiente comando:
 ```bash
 git clone  https://github.com/Chris103105/Segund_Desafio_Pract_DWF_JB251834.git
+
 2. Abrir en el IDE
 
 Abre el proyecto en IntelliJ IDEA (o tu editor de preferencia).
