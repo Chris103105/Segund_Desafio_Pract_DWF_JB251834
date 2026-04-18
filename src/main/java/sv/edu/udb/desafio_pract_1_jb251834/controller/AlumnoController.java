@@ -8,39 +8,57 @@ import sv.edu.udb.desafio_pract_1_jb251834.service.AlumnoService;
 import java.util.List;
 import java.util.Optional;
 
-@RestController // Indica que esta clase responderá peticiones web (REST)
-@RequestMapping("/api/alumnos") // Esta será la URL base
+/**
+ * Controller de la API de Alumnos.
+ * Gestiona el ciclo de vida de los estudiantes mediante peticiones HTTP.
+ */
+@RestController
+@RequestMapping("/api/alumnos")
 public class AlumnoController {
 
+    // Inyección de dependencias mediante Spring
     @Autowired
     private AlumnoService alumnoService;
 
-    // GET: http://localhost:8080/api/alumnos
+    /**
+     * Endpoint GET: Retorna la colección completa de alumnos.
+     */
     @GetMapping
     public List<Alumno> listarTodos() {
         return alumnoService.obtenerTodos();
     }
 
-    // GET: http://localhost:8080/api/alumnos/1
+    /**
+     * Endpoint GET con PathVariable: Busca un registro específico.
+     * Retorna un Optional para manejar de forma segura la ausencia de datos (evita NullPointerExceptions).
+     */
     @GetMapping("/{id}")
     public Optional<Alumno> buscarPorId(@PathVariable Long id) {
         return alumnoService.obtenerPorId(id);
     }
 
-    // POST: http://localhost:8080/api/alumnos
+    /**
+     * Endpoint POST: Recibe un JSON en el cuerpo del request (@RequestBody)
+     * y lo persiste en la base de datos.
+     */
     @PostMapping
     public Alumno crear(@RequestBody Alumno alumno) {
         return alumnoService.guardar(alumno);
     }
 
-    // PUT: http://localhost:8080/api/alumnos/1
+    /**
+     * Endpoint PUT: Actualización de registro existente.
+     * Forzamos la asignación del ID recibido en la URL al objeto para asegurar coherencia.
+     */
     @PutMapping("/{id}")
     public Alumno actualizar(@PathVariable Long id, @RequestBody Alumno alumno) {
-        alumno.setId(id); // Aseguramos que se actualice el ID correcto
+        alumno.setId(id);
         return alumnoService.guardar(alumno);
     }
 
-    // DELETE: http://localhost:8080/api/alumnos/1
+    /**
+     * Endpoint DELETE: Remueve físicamente un registro por su identificador único.
+     */
     @DeleteMapping("/{id}")
     public void eliminar(@PathVariable Long id) {
         alumnoService.eliminar(id);
