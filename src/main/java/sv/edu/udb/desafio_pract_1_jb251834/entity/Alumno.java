@@ -11,11 +11,11 @@ public class Alumno {
 
     // Esta es nuestra Llave Primaria (Primary Key)
     @Id
-    //  la base de datos la creación del ID (es el equivalente a AUTO_INCREMENT)
+    // Delega a la base de datos la creación del ID (es el equivalente a AUTO_INCREMENT)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    //  no aceptamos nombres vacíos (NOT NULL) y el límite es de 100 caracteres
+    // No aceptamos nombres vacíos (NOT NULL) y el límite es de 100 caracteres
     @Column(nullable = false, length = 100)
     private String nombre;
 
@@ -25,7 +25,7 @@ public class Alumno {
 
     // Aquí está la magia principal: la relación de Muchos a Muchos con las materias
     @ManyToMany
-    // Configuramos la tabla intermedia  para que Spring haga los JOINs por nosotros
+    // Configuramos la tabla intermedia para que Spring haga los JOINs por nosotros
     @JoinTable(
             name = "alumno_materia", // Nombre de la tabla puente en nuestra base de datos SQL
             joinColumns = @JoinColumn(name = "id_alumno"), // Nuestra llave foránea en esa tabla
@@ -34,34 +34,40 @@ public class Alumno {
     // Guardamos las materias del alumno en una lista para manejarla fácilmente desde Java
     private List<Materia> materias;
 
-    //  Hibernate lo usa como un molde en blanco para empezar a trabajar
-    public Alumno()
-    {}
+    // Hibernate lo usa como un molde en blanco para empezar a trabajar
+    public Alumno() {
+    }
 
     // --- GETTERS Y SETTERS ---
-
 
     public Long getId() {
         return id;
     }
+
     public void setId(Long id) {
         this.id = id;
     }
+
     public String getNombre() {
         return nombre;
     }
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
     public String getApellido() {
         return apellido;
     }
+
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
+
     public List<Materia> getMaterias() {
         return materias;
     }
+
     public void setMaterias(List<Materia> materias) {
         this.materias = materias;
     }
